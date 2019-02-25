@@ -16,7 +16,7 @@ class Graph():
         bfsResults.append(root)
         while queue:
             v = queue.pop(0)
-            for j in range(nodesNum):
+            for j in range(self.nodesNum):
                 if self.arr[v][j] == 1 and j not in visited:
                     queue.append(j)
                     visited.append(j)
@@ -25,26 +25,35 @@ class Graph():
 
 
 if __name__ == '__main__':
-    nodes = ['a', 'b', 'c', 'd']
-    root = 'a'
-    nodesNum = 4
-    arr = [
-         [0, 1, 1, 0],
-         [1, 0, 1, 0],
-         [1, 1, 0, 1],
-         [0, 0, 1, 0]
-    ]
-    # nodes = ['0', '1', '2', '3','4']
-    # root = '1'
-    # nodesNum = 5
+    # nodes = ['a', 'b', 'c', 'd']
+    # root = 'a'
+    # nodesNum = 4
     # arr = [
-    #     [0, 1, 0, 1, 0],
-    #     [1, 0, 1, 0, 0],
-    #     [0, 1, 0, 1, 1],
-    #     [1, 0, 1, 0, 1],
-    #     [0, 0, 1, 1, 0]
+    #      [0, 1, 1, 0],
+    #      [1, 0, 1, 0],
+    #      [1, 1, 0, 1],
+    #      [0, 0, 1, 0]
     # ]
-
-    g = Graph(nodes, nodesNum, arr)
-    print(" ".join(g.BFS(root)))
+    # print(nodes.index(root))
+    num = int(input())
+    results = ""
+    for i in range(num):
+        resultStr=""
+        arr1 = input().split(" ")
+        nodesNum = int(arr1[0])
+        root = arr1[1]
+        nodes = input().split(" ")
+        rootIndex = nodes.index(root)
+        neighMat = []
+        for j in range(nodesNum):
+            arr2=[int(x) for x in input().split()[1:]]
+            neighMat.append(arr2)
+        # print(neighMat)
+        # print(nodes)
+        # print(nodesNum)
+        g = Graph(nodes, nodesNum, neighMat)
+        results += " ".join(g.BFS(root))+"\n"
+    print(results[:len(results)-1])
+    # g = Graph(nodes, nodesNum, arr)
+    # print(" ".join(g.BFS(root)))
     # print(g.DFS(root))
