@@ -34,7 +34,7 @@ if __name__ == '__main__':
         graph = {}
         for i in point_labels:
             graph[i] = []
-
+            
         for i in range(int(point_num)):
             inpt = input().split()
             for j in range(int(point_num)):
